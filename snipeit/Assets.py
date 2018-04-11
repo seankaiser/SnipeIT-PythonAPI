@@ -69,8 +69,8 @@ class Assets(object):
         jsonData = json.loads(results.content)
         return jsonData['status']
 
-    def getUser(self, server, token, userID):
-        self.uri = '/api/v1/users/' + str(userID)
+    def getDevice(self, server, token, deviceID):
+        self.uri = '/api/v1/hardware/' + str(deviceID)
         self.server = server + self.uri
         headers = {'Authorization': 'Bearer ' + token}
         results = requests.get(self.server, headers=headers)
