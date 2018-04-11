@@ -75,3 +75,9 @@ class Users(object):
         results = requests.get(self.server, headers=headers)
         return results.content
     
+    def getUser(self, server, token, userID):
+        self.uri = '/api/v1/users/' + str(userID)
+        self.server = server + self.uri
+        headers = {'Authorization': 'Bearer ' + token}
+        results = requests.get(self.server, headers=headers)
+        return results.content
