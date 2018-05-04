@@ -62,10 +62,12 @@ class Assets(object):
         return jsonData['status']
 
     def updateDevice(self, server, token, DeviceID, payload):
-        self.uri = '/api/v1/hardware/'
-        self.server = server + self.uri + DeviceID
-        headers = {'Content-Type': 'application/json','Authorization': 'Bearer ' + token}
-        results = requests.patch(self.server, headers=headers, data=payload)
+        #self.uri = '/api/v1/hardware/'
+        self.uri = '/api/v1/hardware/' + str(DeviceID)
+        #self.server = server + self.uri + DeviceID
+        self.server = server + self.uri
+        headers = {'Content-Type': 'application/json', 'Authorization': 'Bearer ' + token}
+        results = requests.patch(self.server, headers=headers, json=payload)
         jsonData = json.loads(results.content)
         return jsonData['status']
 
